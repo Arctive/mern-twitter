@@ -3,8 +3,15 @@ const mongoose = require('mongoose');
 const express = require("express");
 const app = express();
 const db = require('./config/keys').mongoURI;
+
 const users = require('./routes/api/users');
 const tweets = require('./routes/api/tweets');
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+const User = require('./models/User');
 
 //connect mongoDB
 mongoose
@@ -14,7 +21,13 @@ mongoose
 
 //routes
 app.get("/", (req, res) => {
-    res.send("New test");
+    const user = new User({
+        handle: "jim",
+        email: "jim@jim.jim",
+        password: "jimisgreat123"
+    })
+    user.save();
+    res.send("Hello World!");
 });
 
 app.use("/api/users", users);
