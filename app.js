@@ -26,6 +26,7 @@ require('./config/passport')(passport);
 app.use("/api/users", users);
 app.use("/api/tweets", tweets);
 
+app.get("/", (req, res) => res.send("Hello world"));
 
 //port
 const port = process.env.PORT || 5000;

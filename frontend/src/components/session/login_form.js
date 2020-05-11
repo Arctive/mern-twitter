@@ -1,5 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
+import './session.css';
 
 class LoginForm extends React.Component{
     constructor(props){
@@ -35,7 +36,7 @@ class LoginForm extends React.Component{
 
     renderErrors(){
         return (
-            <ul>
+            <ul className="errors">
                 {Object.keys(this.state.errors).map((error, idx) => (
                     <li key={`error-${idx}`}>
                         {this.state.errors[error]}
@@ -47,9 +48,10 @@ class LoginForm extends React.Component{
 
     render(){
         return (
-            <div>
+            <div className="form-container">
                 <form onSubmit={this.handleSubmit}>
-                    <div>
+                    <div className="form">
+                        <br/>
                         <input type="text"
                             value={this.state.email}
                             onChange={this.update("email")}
@@ -62,7 +64,7 @@ class LoginForm extends React.Component{
                             placeholder="Password"
                         />
                         <br/>
-                        <input type="submit"
+                        <input className="button" type="submit"
                             value="Submit"
                         />
                         {this.renderErrors()}

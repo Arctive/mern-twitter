@@ -3,7 +3,7 @@ import React from 'react';
 class TweetBox extends React.Component{
     render(){
         return (
-            <div>
+            <div className="tweet-box">
                 <h3>{this.props.text}</h3>
             </div>
         );
